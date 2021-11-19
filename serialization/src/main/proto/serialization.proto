@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package com.balajiv.serialization.protobuf.message;
+option java_package = "com.balajiv.serialization.protobuf.message";
+option java_outer_classname = "SerializationProto";
+
+message College {
+    int64 id = 1;
+    string name = 2;
+    int64 mobile = 3;
+    string address = 4;
+    repeated Administrator administrators = 5;
+
+}
+
+message Administrator {
+    int64 id = 1;
+    string name = 2;
+    enum Gender {
+        MALE = 0;
+        FEMALE = 1;
+    }
+}
+
+message Student {
+    int64 id = 1;
+    string name = 2;
+    enum Gender {
+        MALE = 0;
+        FEMALE = 1;
+    }
+    Gender gender = 3;
+    Department department = 4; 
+}
+
+message Teacher {
+    int64 id = 1;
+    string name = 2;
+    enum Gender {
+        MALE = 0;
+        FEMALE = 1;
+    }
+    Gender gender = 3;
+    repeated Department department = 4; 
+    repeated Subject subject = 5;
+    int32 rating = 6;
+}
+
+message Department {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message Subject {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+}
