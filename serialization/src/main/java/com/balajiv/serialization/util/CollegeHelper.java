@@ -17,7 +17,7 @@ public class CollegeHelper {
 
         public static College create() {
                 College college = new College();
-                college.setAddress(null);
+                college.setAddress(RandomStringUtils.randomAscii(32));
                 college.setId(new Random().nextLong());
                 college.setMobile(new Random().nextLong());
                 college.setName(RandomStringUtils.randomAscii(32));

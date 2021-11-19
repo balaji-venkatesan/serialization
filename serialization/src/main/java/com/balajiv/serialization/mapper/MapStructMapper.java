@@ -3,10 +3,12 @@ package com.balajiv.serialization.mapper;
 import com.balajiv.serialization.protobuf.message.SerializationProto.*;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.NullValueMappingStrategy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", nullValueMappingStrategy =  = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface MapStructMapper {
 
+    //TODO fix iterator mapping
     // college mapper
     com.balajiv.serialization.dto.College mapToDto(College collegeProto);
     College mapToProto(com.balajiv.serialization.dto.College collegeDto);

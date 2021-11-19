@@ -35,6 +35,9 @@ public class CollegeController {
         College collegeDto = CollegeHelper.create();
         collegeService.createV2(collegeDto);
 
+        // to check if deserialize is working fine or not
+        collegeService.createV2(collegeDto);
+
         StatusResponse response = new StatusResponse();
         response.setSuccess(true);
         return response;

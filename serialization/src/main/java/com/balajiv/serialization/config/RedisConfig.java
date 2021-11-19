@@ -51,5 +51,4 @@ public class RedisConfig {
                                         SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()))
                                 .serializeKeysWith(SerializationPair.fromSerializer(new StringRedisSerializer())));
     }
-
 }
