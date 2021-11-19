@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.balajiv.serialization.dto.College;
 import com.balajiv.serialization.dto.StatusResponse;
+import com.balajiv.serialization.mapper.MapStructMapper;
 import com.balajiv.serialization.service.CollegeService;
 import com.balajiv.serialization.util.CollegeHelper;
 
@@ -15,6 +16,9 @@ public class CollegeController {
 
     @Autowired
     CollegeService collegeService;
+
+    @Autowired
+    MapStructMapper mapper;
 
     @PostMapping(value = "/api/v1/college")
     public StatusResponse createCollegeV1() {
