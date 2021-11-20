@@ -10,6 +10,8 @@ message College {
     int64 mobile = 3;
     string address = 4;
     repeated Administrator administrators = 5;
+    repeated Student students = 6;
+    repeated Teacher teachers = 7;
 
 }
 
