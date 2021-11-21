@@ -2,14 +2,18 @@ package com.balajiv.serialization.mapper;
 
 import com.balajiv.serialization.protobuf.message.SerializationProto.Teacher;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import com.fasterxml.jackson.databind.util.ArrayIterator;
+import org.mapstruct.*;
 
-@Mapper(componentModel = "spring", uses = {SubjectMapper.class, DepartmentMapper.class})
+@Mapper(componentModel = "spring", collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED, uses = {SubjectMapper.class, DepartmentMapper.class})
 public interface TeacherMapper {
-    
+
+    @Mapping(source = "departmentList", target = "departments")
+    @Mapping(source = "subjectList", target = "subjects")
     com.balajiv.serialization.dto.Teacher mapToDto(Teacher teacherProto);
 
-    @Mapping(source = "subjects", target = "subjectList", qualifiedByName = "subject")
+    @Mapping(source = "departments", target = "departmentList")
+    @Mapping(source = "subjects", target = "subjectList")
     Teacher mapToProto(com.balajiv.serialization.dto.Teacher teacherDto);
+
 }

@@ -13,6 +13,7 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair;
 
@@ -43,12 +44,17 @@ public class RedisConfig {
         return (builder) -> builder
                 .withCacheConfiguration("protoCache",
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(100))
-                                .serializeValuesWith(SerializationPair.fromSerializer(new RedisProtoSerializer()))
+                                .serializeValuesWith(SerializationPair.fromSerializer(redisSerializer()))
                                 .serializeKeysWith(SerializationPair.fromSerializer(new StringRedisSerializer())))
                 .withCacheConfiguration("genericjacksonCache",
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(100))
                                 .serializeValuesWith(
                                         SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()))
                                 .serializeKeysWith(SerializationPair.fromSerializer(new StringRedisSerializer())));
+    }
+
+    @Bean
+    public RedisSerializer<College> redisSerializer(){
+        return new RedisProtoSerializer();
     }
 }
