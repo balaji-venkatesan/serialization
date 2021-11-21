@@ -1,4 +1,4 @@
-# serialization
+# Java serialization
 
 ## _Redis usage of generic jackson serializer (158Mb space was used for 50k keys)_
 
