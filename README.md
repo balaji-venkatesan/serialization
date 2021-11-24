@@ -42,3 +42,6 @@ The protobuf (protocol buffers) consist of context file (.proto file)
   The protobuf doesn’t main the order, so field numbers are used for deserializtion.
   
   Another major advantage of using protobuf is that, the SDK will be able to generate code for other languages as well. 
+  
+  TODO:
+  Add a golang example, of fetching values from redis using prtobuf
