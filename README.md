@@ -23,3 +23,22 @@ When a java POJO is serialized, the following are the steps involved
 
 - In the above image, we can see the metadata information that is appended as part of GenericJackson2Json serializer, such as @class,  java.util.ImmutableCollections.List.
 - In this example,  College contains  List<Teacher> and every teacher object contains List<Subjects>, so for every teacher and student,  this meta-information will be occupying additional space.
+
+  
+ ## How does ProtoBuf serialization work:
+  
+  refer: https://developers.google.com/protocol-buffers
+  
+  In protocol buffers, the transmission of data is done in binary format. Because of this it is faster and saves space.
+The protobuf (protocol buffers) consist of context file (.proto file)
+
+  > {
+  > string name = 1;
+  > string address = 2; 
+  > }
+  
+  <img width="1440" alt="Screenshot 2021-11-24 at 10 06 15 PM" src="https://user-images.githubusercontent.com/34711372/143278572-b697b071-fefa-4932-bccb-9e0859a87e7e.png">
+  
+  The protobuf doesn’t main the order, so field numbers are used for deserializtion.
+  
+  Another major advantage of using protobuf is that, the SDK will be able to generate code for other languages as well. 
